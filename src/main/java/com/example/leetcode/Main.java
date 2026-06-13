@@ -7,43 +7,31 @@ import java.util.Arrays;
 public class Main {
 
     public static void main(String[] args) {
-        demoQuickSort();
+        demoBubbleSort();
         System.out.println("\n========== 策略模式示例 ==========\n");
         demoStrategyPattern();
     }
 
-    // ==================== 快速排序 ====================
+    // ==================== 冒泡排序 ====================
 
-    private static void demoQuickSort() {
+    private static void demoBubbleSort() {
         int[] arr = {64, 34, 25, 12, 22, 11, 90};
         System.out.println("排序前: " + Arrays.toString(arr));
-        quickSort(arr, 0, arr.length - 1);
+        bubbleSort(arr);
         System.out.println("排序后: " + Arrays.toString(arr));
     }
 
-    public static void quickSort(int[] arr, int low, int high) {
-        if (low < high) {
-            int pivotIndex = partition(arr, low, high);
-            quickSort(arr, low, pivotIndex - 1);
-            quickSort(arr, pivotIndex + 1, high);
-        }
-    }
-
-    private static int partition(int[] arr, int low, int high) {
-        int pivot = arr[high];
-        int i = low - 1;
-        for (int j = low; j < high; j++) {
-            if (arr[j] < pivot) {
-                i++;
-                int tmp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = tmp;
+    public static void bubbleSort(int[] arr) {
+        int n = arr.length;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - 1 - i; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    int tmp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = tmp;
+                }
             }
         }
-        int tmp = arr[i + 1];
-        arr[i + 1] = arr[high];
-        arr[high] = tmp;
-        return i + 1;
     }
 
     // ==================== 策略模式示例 ====================
