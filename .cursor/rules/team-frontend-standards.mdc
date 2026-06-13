@@ -1,0 +1,20 @@
+---
+description: 
+globs: "**/*.{ts, tsx, js, jsx}"
+alwaysApply: false
+---
+
+# 团队前端项目规范
+
+## 代码风格
+
+1. **JSDoc**：函数必须包含 JSDoc 注释。
+2. **变量声明**：禁止使用 `var`，统一使用 `const` 或 `let`。
+3. **函数命名**：函数名必须添加 `zwf_` 前缀。  
+   - ✅ 示例：`zwf_login`、`zwf_fetchUserList`  
+   - ❌ 示例：`login`、`fetchUserList`
+
+## 依赖管理
+
+- 优先使用项目内已有的工具函数（如 `utils/request`）。
+- 禁止引入低版本的 lodash（版本须 ≥ 4.0.0）。
